@@ -1,0 +1,26 @@
+{
+  "name": "gulp",
+  "description": "First gulp learing",
+  "main": "index.html",
+  "authors": [
+    "Manash Chakrobortty <manash.pstu@gmail.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "bower"
+  ],
+  "homepage": "https://github.com/manashcse11/gulp",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
+    "selectize": "^0.12.4"
+  }
+}

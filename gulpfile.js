@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var wiredep = require('wiredep').stream;
 var inject = require('gulp-inject');
 var webserver = require('gulp-webserver');
 var htmlclean = require('gulp-htmlclean');
@@ -38,7 +39,15 @@ gulp.task('js', function(){
 
 gulp.task('copy', ['html', 'css', 'js']);
 
-gulp.task('inject', ['copy'], function(){
+gulp.task('inject-vendor', ['copy'], function() {
+    return gulp.src(paths.tmpIndex)
+        .pipe(wiredep({
+			directory: './bower_components/',
+			bowerJson: require('./bower.json')}))
+        .pipe(gulp.dest(paths.tmp));
+});
+
+gulp.task('inject', ['inject-vendor'], function(){
 	var css = gulp.src(paths.tmpCSS);
 	var js = gulp.src(paths.tmpJS);
 	return gulp.src(paths.tmpIndex)
